@@ -10,12 +10,27 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Elemento >> calcularTamaño [
-self subclassResponsibility .
+Elemento >> fechaDeCreacion [
+	^ creadoEl
 ]
 
 { #category : #accessing }
 Elemento >> nombre [
-^nombre.
+	^ nombre.
 
+]
+
+{ #category : #'as yet unclassified' }
+Elemento >> ruta: rutaPadre [
+	^ (rutaPadre, '/', self nombre)
+]
+
+{ #category : #'as yet unclassified' }
+Elemento >> soyUnArchivo [ 
+	self subclassResponsibility .
+]
+
+{ #category : #'as yet unclassified' }
+Elemento >> tamanoTotalOcupado [
+	self subclassResponsibility .
 ]

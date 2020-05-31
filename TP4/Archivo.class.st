@@ -6,13 +6,8 @@ Class {
 
 { #category : #'as yet unclassified' }
 Archivo class >> llamado: unString creadoEl: unaFecha kBytes: unNumero [
-	self new initializeLlamado: unString creadoEl: unaFecha kBytes: unNumero.
+	^ self new initializeLlamado: unString creadoEl: unaFecha kBytes: unNumero.
 
-]
-
-{ #category : #'as yet unclassified' }
-Archivo >> calcularTamaño [ 
-^kBytes
 ]
 
 { #category : #initialization }
@@ -28,6 +23,21 @@ Archivo >> kBytes [
 ]
 
 { #category : #'as yet unclassified' }
-Archivo >> listarContenido [
-^false 
+Archivo >> listarContenido: unNombre [
+	 ^ '' 
+]
+
+{ #category : #'as yet unclassified' }
+Archivo >> recuperarArchivos [
+	^ self.
+]
+
+{ #category : #'as yet unclassified' }
+Archivo >> soyUnArchivo [
+ ^ true
+]
+
+{ #category : #'as yet unclassified' }
+Archivo >> tamanoTotalOcupado [ 
+	^ kBytes
 ]
