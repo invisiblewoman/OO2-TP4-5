@@ -12,10 +12,10 @@ Class {
 
 { #category : #running }
 BibiotecaTest >> setUp [
+	super setUp .
 	miBibliotecaVoorhees := Biblioteca new: VoorheesExporter new.
 	miBibliotecaNeo := Biblioteca new: NeoJsonAdapter new.
 	arya:= Socio nombre:'Arya Stark' email:'needle@stark.com' legajo: '5234/5'.
-	tyron:= Socio nombre:'Tyron Lannister' email:'tyron@thelannisters.com' legajo:'2345/2'.
 	miBibliotecaVoorhees agregarSocio: arya.
 	miBibliotecaNeo agregarSocio: arya.
 ]
