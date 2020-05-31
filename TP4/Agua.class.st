@@ -4,12 +4,12 @@ Class {
 	#category : #'TP4-Ej3'
 }
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 Agua >> proporcionAgua [
-^1
+	^1
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 Agua >> proporcionTierra [
-^0
+	^0
 ]
