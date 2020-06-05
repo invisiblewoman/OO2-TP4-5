@@ -1,10 +1,10 @@
 Class {
-	#name : #'CRC16_Calculator',
+	#name : #'CRC32_Calculator',
 	#superclass : #CRCCalculator,
 	#category : #'TP5-EJ3'
 }
 
 { #category : #'as yet unclassified' }
-CRC16_Calculator >> crcFor: aData [
-	^ CRC crc16FromCollection: aData
+CRC32_Calculator >> crcFor: aData [
+	^ CRC crc32FromCollection: aData
 ]
