@@ -11,7 +11,7 @@ PendingState >> addComment: aComment [
 
 { #category : #accessing }
 PendingState >> start [ 
-	item state: InProgressState new.
+	item state: (InProgressState item: item).
 	item timeStarted: (DateAndTime now)
 ]
 

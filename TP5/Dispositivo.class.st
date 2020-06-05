@@ -11,6 +11,11 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+Dispositivo >> changeCRC: aCRC [
+	crc := aCRC
+]
+
+{ #category : #'as yet unclassified' }
 Dispositivo >> connectWith: aConnection [
 	connection := aConnection .
 	ringer ring.

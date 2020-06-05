@@ -19,8 +19,3 @@ PausedState >> finish [
 PausedState >> togglePause [ 
 	item state: (InProgressState item: item).
 ]
-
-{ #category : #'as yet unclassified' }
-PausedState >> workedTime [ 
-	^(item timeFinished) - (DateAndTime now)
-]
