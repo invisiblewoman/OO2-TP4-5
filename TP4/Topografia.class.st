@@ -40,16 +40,21 @@ Class {
 }
 
 { #category : #testing }
-Topografia >> isEqualToMe:aTopografia [
-	^(aTopografia proporcionAgua = self proporcionAgua ) and: [ aTopografia proporcionTierra = self proporcionTierra  ]
+Topografia >> isEqualToMe: aTopografia [
+	^ (aTopografia proporcionAgua = self proporcionAgua ) and: [ aTopografia proporcionTierra = self proporcionTierra  ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #functions }
 Topografia >> proporcionAgua [
 	self subclassResponsibility 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #functions }
 Topografia >> proporcionTierra [
 	self subclassResponsibility 
+]
+
+{ #category : #functions }
+Topografia >> soyUnaTopografiaCompuesta [
+	^ false.
 ]

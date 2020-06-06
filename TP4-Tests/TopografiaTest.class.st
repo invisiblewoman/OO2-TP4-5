@@ -5,7 +5,8 @@ Class {
 	#name : #TopografiaTest,
 	#superclass : #TestCase,
 	#instVars : [
-		'mixta',
+		'topografiaCompuestaVacia',
+		'topografiaCompuesta',
 		'agua',
 		'tierra'
 	],
@@ -16,26 +17,66 @@ Class {
 TopografiaTest >> setUp [
 	agua := Agua new.
 	tierra := Tierra new.
-	mixta := Mixta new.
-	(mixta partes) add: agua; add: tierra; add: agua; add: tierra.
+	topografiaCompuestaVacia := TopografiaCompuesta new.
+	topografiaCompuesta := TopografiaCompuesta partes: (OrderedCollection with: agua with: tierra with: agua with: tierra).
+	
 	
 
 ]
 
 { #category : #tests }
-TopografiaTest >> testEsIgualA [
+TopografiaTest >> testIsEqualToMe [
+	| nuevaTopografia  |
+	
+	"Testeo la topografia agua"
+	nuevaTopografia := Agua new.
+	self assert: (nuevaTopografia isEqualToMe: agua) equals: true.
+	self assert: (nuevaTopografia isEqualToMe: tierra) equals: false.
+	self assert: (nuevaTopografia isEqualToMe: topografiaCompuesta) equals: false.
+	
+	"Testeo la topografia tierra"
+	nuevaTopografia := Tierra new.
+	self assert: (nuevaTopografia isEqualToMe: tierra) equals: true.
+	self assert: (nuevaTopografia isEqualToMe: agua) equals: false.
+	self assert: (nuevaTopografia isEqualToMe: topografiaCompuesta) equals: false.
+	
+	"Testeo la topografia compuesta"
+	nuevaTopografia := topografiaCompuestaVacia.
+	nuevaTopografia
+		addParte: agua   espacio: 1;
+		addParte: tierra espacio: 2;
+		addParte: agua   espacio: 3;
+		addParte: tierra espacio: 4.
+	self assert: (nuevaTopografia isEqualToMe: topografiaCompuesta) equals: true.
+	self assert: (nuevaTopografia isEqualToMe: agua) equals: false.
+	self assert: (nuevaTopografia isEqualToMe: tierra) equals: false.
 
-	| mixta2 |
-mixta2 := Mixta new.
-(mixta2 partes) add: agua; add: agua; add: tierra; add: tierra.
-self assert: (mixta esIgualA: agua) equals: false.
-self assert: (mixta esIgualA: tierra) equals: false.
-self assert: (mixta esIgualA: mixta2) equals: true.
+	nuevaTopografia := topografiaCompuestaVacia.
+	nuevaTopografia
+		addParte: agua   espacio: 1;
+		addParte: agua   espacio: 2;
+		addParte: agua   espacio: 3;
+		addParte: tierra espacio: 4.
+	self assert: (nuevaTopografia isEqualToMe: topografiaCompuesta) equals: false.
 ]
 
 { #category : #tests }
 TopografiaTest >> testProporcionAgua [
 	self assert: (agua proporcionAgua) equals: 1.
 	self assert: (tierra proporcionAgua) equals: 0.
-	self assert: (mixta proporcionAgua) equals: 1/2.
+	self assert: (topografiaCompuesta proporcionAgua) equals: 1/2.
+]
+
+{ #category : #tests }
+TopografiaTest >> testProporcionTierra [
+	self assert: agua proporcionTierra equals: 0.
+	self assert: tierra proporcionTierra equals: 1.
+	self assert: topografiaCompuesta proporcionTierra equals: 1 / 2
+]
+
+{ #category : #tests }
+TopografiaTest >> testSoyUnaTopografiaCompuesta [
+	self assert: (agua soyUnaTopografiaCompuesta ) equals: false.
+	self assert: (tierra soyUnaTopografiaCompuesta) equals: false.
+	self assert: (topografiaCompuesta soyUnaTopografiaCompuesta) equals: true.
 ]
