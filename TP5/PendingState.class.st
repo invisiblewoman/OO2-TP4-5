@@ -11,13 +11,14 @@ PendingState >> addComment: aComment [
 
 { #category : #accessing }
 PendingState >> start [ 
-	item state: (InProgressState item: item).
-	item timeStarted: (DateAndTime now)
+	item timeStarted: (DateAndTime now).
+	item state: (InProgressState item: item)
+	
 ]
 
 { #category : #'as yet unclassified' }
 PendingState >> togglePause [
-	self  error:'No se puede pausar una tarea que aun no ha comenzado'
+	self error: 'No se puede pausar una tarea que aun no ha comenzado'.
 ]
 
 { #category : #'as yet unclassified' }

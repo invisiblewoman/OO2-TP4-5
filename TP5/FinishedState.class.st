@@ -11,5 +11,5 @@ FinishedState >> togglePause [
 
 { #category : #'as yet unclassified' }
 FinishedState >> workedTime [ 
-	^(item timeFinished) - (item timeStarted)
+	^ (item timeFinished) - (item timeStarted)
 ]

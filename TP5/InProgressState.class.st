@@ -11,8 +11,9 @@ InProgressState >> addComment: aComment [
 
 { #category : #initialization }
 InProgressState >> finish [ 
+	item timeFinished: (DateAndTime now).
 	item state: (FinishedState item: item).
-	item timeFinished: (DateAndTime now)
+	
 ]
 
 { #category : #'as yet unclassified' }

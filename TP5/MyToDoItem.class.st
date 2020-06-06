@@ -22,6 +22,11 @@ MyToDoItem >> addComment: aComment [
 ]
 
 { #category : #accessing }
+MyToDoItem >> comments [
+	^ comments.
+]
+
+{ #category : #accessing }
 MyToDoItem >> comments: aComment [
 	comments add: aComment .
 ]
@@ -55,7 +60,7 @@ MyToDoItem >> start [
 
 { #category : #accessing }
 MyToDoItem >> state [ 
-	^state
+	^ state
 ]
 
 { #category : #accessing }
@@ -75,7 +80,7 @@ MyToDoItem >> timeFinished: aTime [
 
 { #category : #accessing }
 MyToDoItem >> timeStarted [
-	^timeStarted 
+	^ timeStarted 
 ]
 
 { #category : #accessing }
@@ -90,5 +95,5 @@ MyToDoItem >> togglePause [
 
 { #category : #'as yet unclassified' }
 MyToDoItem >> workedTime [ 
-	state workedTime 
+	^ state workedTime 
 ]

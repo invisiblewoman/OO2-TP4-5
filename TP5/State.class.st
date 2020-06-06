@@ -41,5 +41,5 @@ State >> togglePause [
 
 { #category : #'as yet unclassified' }
 State >> workedTime [
-	^(DateAndTime now) - (item timeStarted)
+	^ (DateAndTime now - item timeStarted)
 ]
