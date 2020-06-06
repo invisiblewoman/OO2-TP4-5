@@ -22,6 +22,16 @@ Dispositivo >> connectWith: aConnection [
 	display showBanner: connection pict .
 ]
 
+{ #category : #accessing }
+Dispositivo >> connection [
+	^ connection
+]
+
+{ #category : #accessing }
+Dispositivo >> crc [
+	^ crc
+]
+
 { #category : #initialization }
 Dispositivo >> initialize [ 
 	display := DisplayMovil new.
