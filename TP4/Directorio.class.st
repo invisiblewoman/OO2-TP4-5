@@ -20,13 +20,35 @@ Directorio >> agregar: unElemento [
 { #category : #'as yet unclassified' }
 Directorio >> archivoMasGrande [
 	"Retorna el archivo con fecha de creacion más reciente en cualquier nivel del filesystem contenido por directorio receptor."
-	^ self recuperarArchivos asSortedCollection: [ :a1 :a2 | a1 tamanoTotalOcupado >= a2 tamanoTotalOcupado ] first.
+	| tamaño masGrande |
+	tamaño := 0.
+	contenido
+		do: [ :elemento | 
+			elemento soyUnArchivo
+				ifTrue: [ elemento kBytes > tamaño
+						ifTrue: [ masGrande := elemento.
+							tamaño := elemento kBytes ] ]
+				ifFalse: [ elemento archivoMasGrande kBytes > tamaño
+						ifTrue: [ masGrande := elemento archivoMasGrande.
+							tamaño := elemento archivoMasGrande kBytes ] ] ].
+	^ masGrande
 ]
 
 { #category : #'as yet unclassified' }
 Directorio >> archivoMasNuevo [
 	"Retorna el archivo con fecha de creacion más reciente en cualquier nivel del filesystem contenido por directorio receptor."
-	^ self recuperarArchivos asSortedCollection: [ :a1 :a2 | a1 fechaDeCreacion >= a2 fechaDeCreacion ] first.
+	| date masNuevo |
+	date := Date readFromString: '01/01/1900'.
+	contenido
+		do: [ :elemento | 
+			elemento soyUnArchivo
+				ifTrue: [ elemento fechaDeCreacion > date
+						ifTrue: [ masNuevo := elemento.
+							date := elemento fechaDeCreacion ] ]
+				ifFalse: [ elemento archivoMasNuevo fechaDeCreacion > date
+						ifTrue: [ masNuevo := elemento archivoMasNuevo.
+							date := elemento archivoMasNuevo fechaDeCreacion ] ] ].
+	^ masNuevo
 ]
 
 { #category : #'as yet unclassified' }
@@ -81,12 +103,6 @@ Directorio >> listarContenido: rutaPadre [
 			stream skip: -1.
 		].
 
-]
-
-{ #category : #'as yet unclassified' }
-Directorio >> recuperarArchivos [
-	^ contenido collect: [ :elemento | elemento recuperarArchivos ].
-	
 ]
 
 { #category : #'as yet unclassified' }

@@ -28,11 +28,6 @@ Archivo >> listarContenido: unNombre [
 ]
 
 { #category : #'as yet unclassified' }
-Archivo >> recuperarArchivos [
-	^ self.
-]
-
-{ #category : #'as yet unclassified' }
 Archivo >> soyUnArchivo [
  ^ true
 ]
