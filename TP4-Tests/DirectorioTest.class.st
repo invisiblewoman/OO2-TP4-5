@@ -62,6 +62,33 @@ DirectorioTest >> setUp [
 						yourself)
 ]
 
+{ #category : #tests }
+DirectorioTest >> testArchivoMasGrande [
+
+self assert: (vacio archivoMasGrande) equals: nil.
+self assert: (conUnArchivo archivoMasGrande) equals: config.
+self assert: (conVariosArchivos archivoMasGrande) equals: grande.
+self assert: (conSubdirectorios archivoMasGrande) equals: backup2015.
+]
+
+{ #category : #tests }
+DirectorioTest >> testArchivoMasNuevo [
+
+self assert: (vacio archivoMasNuevo) equals: nil.
+self assert: (conUnArchivo archivoMasNuevo) equals: config.
+self assert: (conVariosArchivos archivoMasNuevo) equals: grande.
+self assert: (conSubdirectorios archivoMasNuevo) equals: backup2015.
+]
+
+{ #category : #tests }
+DirectorioTest >> testCantidadDeArchivos [
+
+self assert: (vacio cantidadDeArchivos) equals: ''.
+self assert: (conUnArchivo cantidadDeArchivos) equals: ' (1 archivos)'.
+self assert: (conVariosArchivos cantidadDeArchivos) equals: ' (4 archivos)'.
+self assert: (conSubdirectorios cantidadDeArchivos) equals: ' (1 archivos)'.
+]
+
 { #category : #running }
 DirectorioTest >> testListadoDeContenido [
 	| listado listadoStream|
@@ -75,4 +102,14 @@ DirectorioTest >> testListadoDeContenido [
 	listadoStream << '/log/postgres (3 archivos)'.
 	listado := listadoStream contents.
 	self assert: conSubdirectorios listadoDeContenido equals: listado
+]
+
+{ #category : #tests }
+DirectorioTest >> testTamanoTotalOcupado [
+	
+	self assert: (vacio tamanoTotalOcupado) equals: 0.
+	self assert: (conUnArchivo tamanoTotalOcupado) equals: 160.
+	self assert: (conVariosArchivos tamanoTotalOcupado) equals: 2010042.
+	self assert: (conSubdirectorios tamanoTotalOcupado) equals: 256690128.
+	
 ]
