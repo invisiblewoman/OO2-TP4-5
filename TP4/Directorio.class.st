@@ -112,5 +112,5 @@ Directorio >> soyUnArchivo [
 
 { #category : #'as yet unclassified' }
 Directorio >> tamanoTotalOcupado [
-	^ kBytes + contenido sumNumbers: [ :elemento | elemento tamanoTotalOcupado ].
+	^ kBytes + (contenido sumNumbers: [ :elemento | elemento tamanoTotalOcupado ]).
 ]

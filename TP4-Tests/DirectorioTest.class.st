@@ -107,7 +107,7 @@ DirectorioTest >> testListadoDeContenido [
 { #category : #tests }
 DirectorioTest >> testTamanoTotalOcupado [
 	
-	self assert: (vacio tamanoTotalOcupado) equals: 0.
+	self assert: (vacio tamanoTotalOcupado) equals: 32.
 	self assert: (conUnArchivo tamanoTotalOcupado) equals: 160.
 	self assert: (conVariosArchivos tamanoTotalOcupado) equals: 2010042.
 	self assert: (conSubdirectorios tamanoTotalOcupado) equals: 256690128.
