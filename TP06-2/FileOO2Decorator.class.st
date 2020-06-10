@@ -1,107 +1,65 @@
 Class {
 	#name : #FileOO2Decorator,
-	#superclass : #FileOO2,
+	#superclass : #Object,
 	#instVars : [
-		'file',
-		'configuration'
+		'decorado'
 	],
 	#category : #'TP06-2'
 }
 
 { #category : #accessing }
-FileOO2Decorator class >> file: aFile [
-	^self new initializeFile: aFile
+FileOO2Decorator class >> with: aFile [
+	^self new initialize: aFile
 ]
 
 { #category : #accessing }
-FileOO2Decorator class >> file: aFile configuration: aConfiguration [
-	^self new initializeFile: aFile configuration: aConfiguration
-]
-
-{ #category : #'as yet unclassified' }
-FileOO2Decorator >> agregarExtension: espacio [
-	configuration at: espacio put: [ file extension ]
-]
-
-{ #category : #'as yet unclassified' }
-FileOO2Decorator >> agregarFechaCreacion: espacio [
-	configuration at: espacio put: [ file fechaCreación  ]
-]
-
-{ #category : #'as yet unclassified' }
-FileOO2Decorator >> agregarFechaModificacion: espacio [
-	configuration at: espacio put: [ file fechaModificación   ]
-]
-
-{ #category : #'as yet unclassified' }
-FileOO2Decorator >> agregarNombre: espacio [
-	configuration at: espacio put: [ file nombre ]
-]
-
-{ #category : #'as yet unclassified' }
-FileOO2Decorator >> agregarPermisos: espacio [
-	configuration at: espacio put: [file permisos ]
-]
-
-{ #category : #'as yet unclassified' }
-FileOO2Decorator >> agregarTamaño: espacio [
-	configuration at: espacio put: [ file tamaño ]
-]
-
-{ #category : #accessing }
-FileOO2Decorator >> configuration [
-	^configuration
+FileOO2Decorator >> decorado [ 	
+	^decorado
 ]
 
 { #category : #accessing }
 FileOO2Decorator >> extension [
-	^file extension
+	^decorado extension
 ]
 
 { #category : #accessing }
 FileOO2Decorator >> fechaCreación [ 
-	^file fechaCreación
+	^decorado fechaCreación
 ]
 
 { #category : #accessing }
 FileOO2Decorator >> fechaModificación [  
-	^file fechaModificación
-]
-
-{ #category : #accessing }
-FileOO2Decorator >> file [ 	
-	^file
+	^decorado fechaModificación
 ]
 
 { #category : #initialization }
-FileOO2Decorator >> initializeFile: aFile [
-	file := aFile.
-	configuration := Array new: 6.
+FileOO2Decorator >> initialize: aFile [
+	decorado := aFile.
 ]
 
 { #category : #accessing }
 FileOO2Decorator >> nombre [
-	^file nombre
+	^decorado nombre
 ]
 
 { #category : #accessing }
 FileOO2Decorator >> permisos [  
-	^file permisos
+	^decorado permisos
+]
+
+{ #category : #'as yet unclassified' }
+FileOO2Decorator >> prettryPrintDecorator [
+	|s|
+	s := decorado prettyPrint .
+	(s = '') ifFalse: [ s:= '-', s ].
+	^s
 ]
 
 { #category : #'menu commands' }
 FileOO2Decorator >> prettyPrint [
-	^ String streamContents: [ :stream |
-		configuration do: [ :configurationItem |
-			configurationItem ifNotNil: [  
-			stream << configurationItem value.
-			stream << ' / '
-			]
-		]
-	]
 ]
 
 { #category : #accessing }
 FileOO2Decorator >> tamaño [
-	^file tamaño
+	^decorado tamaño
 ]

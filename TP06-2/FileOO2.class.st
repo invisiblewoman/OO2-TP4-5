@@ -84,7 +84,7 @@ FileOO2 >> permisos: anObject [
 
 { #category : #'menu commands' }
 FileOO2 >> prettyPrint [ 
-	^ nombre , ' / ', extension , ' / ', tamaño,  ' - ', fechaCreación asString, ' / ', fechaModificación asString, ' / ', permisos 
+	^ ''
 ]
 
 { #category : #accessing }
